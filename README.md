@@ -1,10 +1,8 @@
-# Funnel
+# Funnel – Teil 1
 
-JSON-gesteuerter Recruiting-Funnel als statische Website.
+Erster Abschnitt des Funnels als statische HTML/CSS/JS-Umsetzung.
 
-## Starten
-
-Da die Seite eine JSON-Datei lädt, sollte sie über einen lokalen Server ausgeführt werden:
+## Start
 
 ```bash
 python3 -m http.server 8000
@@ -12,17 +10,9 @@ python3 -m http.server 8000
 
 Dann im Browser öffnen: `http://localhost:8000`
 
-## Konfiguration anpassen
+## Inhalte pflegen
 
-Alle Inhalte befinden sich in `funnel-config.json`.
+Alle sichtbaren Texte liegen als Key-Value-Werte in `funnel-config.json` unter `texts`.
+Die Seite lädt diese Inhalte beim Start per JavaScript.
 
-Dort kannst du unter anderem ändern:
-
-- Firmenname, Headline, Beschreibung
-- Benefits
-- CTA-Text
-- Fragen und Antwortoptionen inkl. Score
-- Ergebnistexte
-- Labels für Name/E-Mail und Erfolgsmeldung
-
-Nach dem Speichern der JSON-Datei Seite neu laden, dann sind die neuen Texte direkt sichtbar.
+Bilder sind aktuell als Platzhalter umgesetzt.

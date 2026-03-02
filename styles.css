@@ -1,0 +1,192 @@
+:root {
+  --bg: #f3f3f3;
+  --white: #ffffff;
+  --navy: #062341;
+  --blue: #1653c7;
+  --text: #111111;
+  --muted: #555;
+  --border: #e3e3e3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+}
+
+.phone-frame {
+  width: min(100%, 390px);
+  min-height: 100vh;
+  background: var(--white);
+  border-inline: 1px solid #ddd;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.icon-btn {
+  border: 0;
+  background: transparent;
+  font-size: 24px;
+  color: #333;
+}
+
+.domain-wrap {
+  text-align: center;
+}
+
+.domain {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.channel {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.logo-area {
+  padding: 14px;
+  display: grid;
+  place-items: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo-placeholder,
+.image-placeholder {
+  border: 2px dashed #c5c5c5;
+  background: #f8f8f8;
+  color: #727272;
+  display: grid;
+  place-items: center;
+}
+
+.logo-placeholder {
+  width: 180px;
+  height: 54px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.hero-copy {
+  text-align: center;
+  padding: 12px 18px;
+}
+
+.hero-copy h1 {
+  margin: 0;
+  font-size: 36px;
+  line-height: 1.05;
+}
+
+.hero-copy p {
+  margin: 8px 0 0;
+  font-size: 31px;
+  line-height: 1.15;
+}
+
+.job-strip {
+  background: var(--navy);
+  color: var(--white);
+  text-align: center;
+  padding: 10px 14px;
+}
+
+.job-strip-label {
+  margin: 0;
+  font-size: 17px;
+}
+
+.job-strip h2 {
+  margin: 2px 0 0;
+  font-size: 46px;
+  line-height: 1;
+}
+
+.meta-row {
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.meta-row p {
+  margin: 4px 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.image-placeholder {
+  margin: 0;
+  height: 260px;
+  font-size: 19px;
+}
+
+.cta-wrap {
+  background: #efefef;
+  padding: 14px;
+}
+
+.cta {
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  background: var(--blue);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 30px;
+  padding: 12px 14px;
+}
+
+.bottom-band {
+  background: var(--navy);
+  text-align: center;
+  color: var(--white);
+  padding: 18px 14px;
+}
+
+.bottom-band h3 {
+  margin: 0;
+  font-size: 45px;
+  line-height: 1;
+}
+
+@media (max-width: 420px) {
+  .hero-copy h1 {
+    font-size: 28px;
+  }
+
+  .hero-copy p {
+    font-size: 24px;
+  }
+
+  .job-strip h2 {
+    font-size: 38px;
+  }
+
+  .meta-row p {
+    font-size: 18px;
+  }
+
+  .cta {
+    font-size: 24px;
+  }
+
+  .bottom-band h3 {
+    font-size: 34px;
+  }
+}

@@ -1,69 +1,32 @@
 {
   "meta": {
-    "pageTitle": "Karriere-Funnel | TechSolutions GmbH",
-    "themeColor": "#2b6ef2"
+    "pageTitle": "Funnel Teil 1 | Sicherheits-Techniker"
   },
-  "company": {
-    "name": "TechSolutions GmbH",
-    "headline": "Starte deine Karriere in einem Team, das Menschen und Technologie verbindet.",
-    "description": "Wir helfen mittelständischen Unternehmen bei der Digitalisierung. Dafür suchen wir Menschen mit Drive, Lernbereitschaft und Freude an Teamarbeit.",
-    "benefitsTitle": "Was dich bei uns erwartet",
-    "benefits": [
-      "Flexibles Arbeiten mit Homeoffice-Option",
-      "Persönliches Weiterbildungsbudget",
-      "Sicheres Fixgehalt + attraktiver Bonus",
-      "Kurze Entscheidungswege und echtes Teamgefühl"
-    ],
-    "ctaLabel": "Jetzt Eignung in 2 Minuten prüfen"
-  },
-  "funnel": {
-    "intro": {
-      "title": "Finde heraus, ob wir zusammenpassen.",
-      "text": "Beantworte ein paar kurze Fragen. Anschließend bekommst du sofort eine erste Einschätzung und kannst dich direkt eintragen."
+  "texts": {
+    "top": {
+      "domain": "www.offene-stellenanzeige.ch",
+      "channel": "Instagram"
     },
-    "questions": [
-      {
-        "id": "experience",
-        "question": "Wie viel Berufserfahrung bringst du im relevanten Bereich mit?",
-        "options": [
-          { "label": "0–1 Jahre", "score": 1 },
-          { "label": "2–3 Jahre", "score": 2 },
-          { "label": "4+ Jahre", "score": 3 }
-        ]
-      },
-      {
-        "id": "motivation",
-        "question": "Wie stark willst du dich in den nächsten 12 Monaten beruflich weiterentwickeln?",
-        "options": [
-          { "label": "Eher gering", "score": 1 },
-          { "label": "Mittel", "score": 2 },
-          { "label": "Sehr hoch", "score": 3 }
-        ]
-      },
-      {
-        "id": "availability",
-        "question": "Wann könntest du frühestens starten?",
-        "options": [
-          { "label": "Sofort", "score": 3 },
-          { "label": "In 1–2 Monaten", "score": 2 },
-          { "label": "Später als 2 Monate", "score": 1 }
-        ]
-      }
-    ],
-    "resultMessages": {
-      "high": "Starkes Match! Dein Profil passt sehr gut zu unseren Anforderungen.",
-      "medium": "Gutes Match! Lass uns im Gespräch herausfinden, wie gut wir zusammenpassen.",
-      "low": "Danke für deine Antworten! Ein kurzes Gespräch hilft uns, dein Potenzial besser einzuordnen."
+    "brand": {
+      "logoPlaceholder": "LOGO PLATZHALTER"
     },
-    "contact": {
-      "title": "Fast geschafft – wohin dürfen wir uns melden?",
-      "nameLabel": "Dein Name",
-      "emailLabel": "Deine E-Mail",
-      "submitLabel": "Unverbindlich eintragen"
+    "hero": {
+      "title": "Deine nächste Baustelle?",
+      "subtitle": "Luxusvillen und High-Tech-Objekte, nicht Rohbau.",
+      "imagePlaceholder": "BILD PLATZHALTER"
     },
-    "success": {
-      "title": "Vielen Dank für dein Interesse!",
-      "text": "Wir prüfen deine Angaben und melden uns zeitnah bei dir."
+    "job": {
+      "nextStep": "Mach den nächsten Schritt als:",
+      "title": "Sicherheitstechniker",
+      "match": "100%",
+      "location": "Adliswil / Region Zürich",
+      "start": "ab sofort"
+    },
+    "cta": {
+      "label": "Jetzt bewerben!"
+    },
+    "bottom": {
+      "title": "Wir suchen dich:"
     }
   }
 }
