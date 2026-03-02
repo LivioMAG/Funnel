@@ -90,13 +90,13 @@ body {
 
 .hero-copy h1 {
   margin: 0;
-  font-size: 36px;
+  font-size: 24px;
   line-height: 1.05;
 }
 
 .hero-copy p {
   margin: 8px 0 0;
-  font-size: 31px;
+  font-size: 24px;
   line-height: 1.15;
 }
 
@@ -109,12 +109,12 @@ body {
 
 .job-strip-label {
   margin: 0;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .job-strip h2 {
   margin: 2px 0 0;
-  font-size: 46px;
+  font-size: 36px;
   line-height: 1;
 }
 
@@ -126,14 +126,14 @@ body {
 
 .meta-row p {
   margin: 4px 0;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
 }
 
 .image-placeholder {
   margin: 0;
   height: 260px;
-  font-size: 19px;
+  font-size: 16px;
 }
 
 .cta-wrap {
@@ -148,7 +148,7 @@ body {
   background: var(--blue);
   color: var(--white);
   font-weight: 700;
-  font-size: 30px;
+  font-size: 24px;
   padding: 12px 14px;
 }
 
@@ -161,32 +161,32 @@ body {
 
 .bottom-band h3 {
   margin: 0;
-  font-size: 45px;
+  font-size: 34px;
   line-height: 1;
 }
 
 @media (max-width: 420px) {
   .hero-copy h1 {
-    font-size: 28px;
+    font-size: 20px;
   }
 
   .hero-copy p {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .job-strip h2 {
-    font-size: 38px;
+    font-size: 32px;
   }
 
   .meta-row p {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .cta {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .bottom-band h3 {
-    font-size: 34px;
+    font-size: 30px;
   }
 }
