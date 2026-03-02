@@ -1,1 +1,418 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recruiting Funnel</title>
+    <style>
+      :root {
+        --bg: #f5f7ff;
+        --card: #ffffff;
+        --text: #1d2340;
+        --muted: #5d678a;
+        --accent: #2b6ef2;
+        --accent-soft: #e9efff;
+        --radius: 18px;
+      }
 
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        color: var(--text);
+        background: linear-gradient(180deg, #f9faff 0%, #eef2ff 100%);
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 32px 16px 56px;
+      }
+
+      .hero,
+      .card {
+        background: var(--card);
+        border-radius: var(--radius);
+        box-shadow: 0 10px 25px rgba(21, 41, 92, 0.08);
+        padding: 28px;
+        margin-bottom: 20px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin-top: 0;
+      }
+
+      p {
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      ul {
+        padding-left: 20px;
+      }
+
+      li {
+        margin-bottom: 10px;
+        color: var(--muted);
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      .button {
+        width: 100%;
+        border: 0;
+        border-radius: 12px;
+        padding: 13px 16px;
+        font-size: 1rem;
+        font-weight: 650;
+        cursor: pointer;
+      }
+
+      .button-primary {
+        background: var(--accent);
+        color: white;
+      }
+
+      .button-secondary {
+        background: var(--accent-soft);
+        color: var(--accent);
+      }
+
+      .options {
+        display: grid;
+        gap: 10px;
+      }
+
+      .option {
+        width: 100%;
+        text-align: left;
+        border: 1px solid #d7deff;
+        border-radius: 12px;
+        background: #fff;
+        padding: 12px 14px;
+        cursor: pointer;
+        font-size: 0.98rem;
+      }
+
+      .option.selected {
+        border-color: var(--accent);
+        background: var(--accent-soft);
+      }
+
+      .progress-wrap {
+        margin-bottom: 16px;
+      }
+
+      .progress-track {
+        width: 100%;
+        height: 8px;
+        background: #e6e9f5;
+        border-radius: 999px;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        width: 0;
+        background: var(--accent);
+        transition: width 0.2s ease;
+      }
+
+      .progress-label {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+
+      .form-grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      label {
+        font-weight: 600;
+      }
+
+      input {
+        width: 100%;
+        border: 1px solid #d7deff;
+        border-radius: 12px;
+        padding: 12px;
+        font-size: 1rem;
+      }
+
+      .result-badge {
+        display: inline-block;
+        background: var(--accent-soft);
+        color: var(--accent);
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container" id="app">
+      <section class="hero" id="company-card"></section>
+
+      <section class="card hidden" id="intro-card">
+        <h2 id="intro-title"></h2>
+        <p id="intro-text"></p>
+        <button class="button button-primary" id="start-btn">Start</button>
+      </section>
+
+      <section class="card hidden" id="questions-card">
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-label"></div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+        </div>
+        <h3 id="question-title"></h3>
+        <div class="options" id="options"></div>
+        <div style="display: flex; gap: 10px; margin-top: 16px">
+          <button class="button button-secondary" id="back-btn">Zurück</button>
+          <button class="button button-primary" id="next-btn">Weiter</button>
+        </div>
+      </section>
+
+      <section class="card hidden" id="result-card">
+        <span class="result-badge">Deine Ersteinschätzung</span>
+        <h3 id="result-title"></h3>
+        <p id="result-text"></p>
+        <button class="button button-primary" id="to-contact-btn">Kontaktdaten eingeben</button>
+      </section>
+
+      <section class="card hidden" id="contact-card">
+        <h3 id="contact-title"></h3>
+        <form class="form-grid" id="contact-form">
+          <div>
+            <label for="name-input" id="name-label"></label>
+            <input id="name-input" name="name" required />
+          </div>
+          <div>
+            <label for="email-input" id="email-label"></label>
+            <input id="email-input" type="email" name="email" required />
+          </div>
+          <button type="submit" class="button button-primary" id="submit-btn"></button>
+        </form>
+      </section>
+
+      <section class="card hidden" id="success-card">
+        <h3 id="success-title"></h3>
+        <p id="success-text"></p>
+      </section>
+    </main>
+
+    <script>
+      let config;
+      let currentQuestionIndex = 0;
+      const answers = {};
+      let score = 0;
+
+      const el = {
+        companyCard: document.getElementById('company-card'),
+        introCard: document.getElementById('intro-card'),
+        introTitle: document.getElementById('intro-title'),
+        introText: document.getElementById('intro-text'),
+        startBtn: document.getElementById('start-btn'),
+        questionsCard: document.getElementById('questions-card'),
+        progressLabel: document.getElementById('progress-label'),
+        progressFill: document.getElementById('progress-fill'),
+        questionTitle: document.getElementById('question-title'),
+        options: document.getElementById('options'),
+        backBtn: document.getElementById('back-btn'),
+        nextBtn: document.getElementById('next-btn'),
+        resultCard: document.getElementById('result-card'),
+        resultTitle: document.getElementById('result-title'),
+        resultText: document.getElementById('result-text'),
+        toContactBtn: document.getElementById('to-contact-btn'),
+        contactCard: document.getElementById('contact-card'),
+        contactTitle: document.getElementById('contact-title'),
+        nameLabel: document.getElementById('name-label'),
+        emailLabel: document.getElementById('email-label'),
+        submitBtn: document.getElementById('submit-btn'),
+        contactForm: document.getElementById('contact-form'),
+        successCard: document.getElementById('success-card'),
+        successTitle: document.getElementById('success-title'),
+        successText: document.getElementById('success-text')
+      };
+
+      function showOnly(section) {
+        [el.introCard, el.questionsCard, el.resultCard, el.contactCard, el.successCard].forEach((card) => {
+          card.classList.add('hidden');
+        });
+        section.classList.remove('hidden');
+      }
+
+      function renderCompany() {
+        const { company } = config;
+        document.title = config.meta.pageTitle;
+        document.documentElement.style.setProperty('--accent', config.meta.themeColor);
+
+        el.companyCard.innerHTML = `
+          <h1>${company.name}</h1>
+          <p><strong>${company.headline}</strong></p>
+          <p>${company.description}</p>
+          <h3>${company.benefitsTitle}</h3>
+          <ul>
+            ${company.benefits.map((benefit) => `<li>${benefit}</li>`).join('')}
+          </ul>
+          <button class="button button-primary" id="company-cta">${company.ctaLabel}</button>
+        `;
+
+        document.getElementById('company-cta').addEventListener('click', () => {
+          showOnly(el.introCard);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      function renderIntro() {
+        el.introTitle.textContent = config.funnel.intro.title;
+        el.introText.textContent = config.funnel.intro.text;
+      }
+
+      function renderQuestion() {
+        const questions = config.funnel.questions;
+        const question = questions[currentQuestionIndex];
+        const selected = answers[question.id];
+
+        el.progressLabel.textContent = `Frage ${currentQuestionIndex + 1} von ${questions.length}`;
+        el.progressFill.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+        el.questionTitle.textContent = question.question;
+
+        el.options.innerHTML = '';
+        question.options.forEach((option, idx) => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = `option ${selected === idx ? 'selected' : ''}`.trim();
+          button.textContent = option.label;
+          button.addEventListener('click', () => {
+            answers[question.id] = idx;
+            renderQuestion();
+          });
+          el.options.appendChild(button);
+        });
+
+        el.backBtn.disabled = currentQuestionIndex === 0;
+      }
+
+      function calculateScore() {
+        score = 0;
+        config.funnel.questions.forEach((question) => {
+          const answerIndex = answers[question.id];
+          if (typeof answerIndex === 'number') {
+            score += question.options[answerIndex].score;
+          }
+        });
+      }
+
+      function renderResult() {
+        calculateScore();
+        const maxScore = config.funnel.questions.reduce((total, question) => {
+          return total + Math.max(...question.options.map((option) => option.score));
+        }, 0);
+
+        const ratio = score / maxScore;
+        let message = config.funnel.resultMessages.low;
+        if (ratio >= 0.75) {
+          message = config.funnel.resultMessages.high;
+        } else if (ratio >= 0.45) {
+          message = config.funnel.resultMessages.medium;
+        }
+
+        el.resultTitle.textContent = `Score: ${score} von ${maxScore}`;
+        el.resultText.textContent = message;
+      }
+
+      function renderContact() {
+        const contact = config.funnel.contact;
+        el.contactTitle.textContent = contact.title;
+        el.nameLabel.textContent = contact.nameLabel;
+        el.emailLabel.textContent = contact.emailLabel;
+        el.submitBtn.textContent = contact.submitLabel;
+      }
+
+      function renderSuccess() {
+        const success = config.funnel.success;
+        el.successTitle.textContent = success.title;
+        el.successText.textContent = success.text;
+      }
+
+      function wireEvents() {
+        el.startBtn.addEventListener('click', () => {
+          currentQuestionIndex = 0;
+          showOnly(el.questionsCard);
+          renderQuestion();
+        });
+
+        el.nextBtn.addEventListener('click', () => {
+          const question = config.funnel.questions[currentQuestionIndex];
+          if (typeof answers[question.id] !== 'number') {
+            alert('Bitte wähle eine Antwort aus, um fortzufahren.');
+            return;
+          }
+
+          if (currentQuestionIndex < config.funnel.questions.length - 1) {
+            currentQuestionIndex += 1;
+            renderQuestion();
+          } else {
+            renderResult();
+            showOnly(el.resultCard);
+          }
+        });
+
+        el.backBtn.addEventListener('click', () => {
+          if (currentQuestionIndex > 0) {
+            currentQuestionIndex -= 1;
+            renderQuestion();
+          }
+        });
+
+        el.toContactBtn.addEventListener('click', () => {
+          showOnly(el.contactCard);
+        });
+
+        el.contactForm.addEventListener('submit', (event) => {
+          event.preventDefault();
+          const formData = new FormData(el.contactForm);
+          console.log('Lead erfasst:', {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            answers,
+            score
+          });
+          showOnly(el.successCard);
+        });
+      }
+
+      async function init() {
+        try {
+          const response = await fetch('./funnel-config.json');
+          config = await response.json();
+        } catch (error) {
+          document.getElementById('app').innerHTML =
+            '<section class="card"><h2>Fehler beim Laden der Konfiguration</h2><p>Bitte stelle sicher, dass die Datei <code>funnel-config.json</code> vorhanden ist und die Seite über einen lokalen Server läuft.</p></section>';
+          return;
+        }
+
+        renderCompany();
+        renderIntro();
+        renderContact();
+        renderSuccess();
+        wireEvents();
+      }
+
+      init();
+    </script>
+  </body>
+</html>
