@@ -1,6 +1,6 @@
 {
   "meta": {
-    "pageTitle": "Funnel Teil 1 | Sicherheits-Techniker"
+    "pageTitle": "Funnel Teil 1 + 2 | Sicherheits-Techniker"
   },
   "texts": {
     "top": {
@@ -27,6 +27,36 @@
     },
     "bottom": {
       "title": "Wir suchen dich:"
+    },
+    "story": {
+      "paragraph1": "Wir suchen jemanden, der mitdenkt statt nur mitläuft. Eine Person, die Freude daran hat, wenn Technik, Präzision und Sicherheit am Ende perfekt zusammenspielen.",
+      "paragraph2Start": "Jemanden, der stolz ist, wenn ein System unsichtbar funktioniert, weil er es sauber geplant, installiert und in Betrieb genommen hat. Du übernimmst gerne ",
+      "paragraph2Strong1": "Verantwortung",
+      "paragraph2Middle": ", arbeitest ",
+      "paragraph2Strong2": "selbstständig",
+      "paragraph2Strong3": "Qualität, Vertrauen und Zusammenhalt",
+      "paragraph2End": " an erster Stelle stehen.",
+      "paragraph3Start": "Wenn du moderne Technik liebst, gerne anpackst, strukturiert arbeitest und ",
+      "paragraph3Strong1": "exklusive Projekte",
+      "paragraph3End": " suchst, dann passt du genau zu uns.",
+      "imagePlaceholder": "BILD PLATZHALTER"
+    },
+    "reasons": {
+      "title": "Warum du zu uns willst:",
+      "items": {
+        "exclusiveProjects": {
+          "title": "Exklusive Projekte",
+          "description": "Arbeite an hochwertigen Objekten mit moderner Sicherheits- und Gebäudetechnik."
+        },
+        "teamCulture": {
+          "title": "Starkes Team",
+          "description": "Klare Abläufe, kurze Wege und eine Zusammenarbeit, auf die du dich verlassen kannst."
+        },
+        "quality": {
+          "title": "Qualität mit Anspruch",
+          "description": "Von Planung bis Inbetriebnahme zählt saubere Arbeit auf professionellem Niveau."
+        }
+      }
     }
   }
 }

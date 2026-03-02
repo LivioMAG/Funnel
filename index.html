@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Funnel Teil 1</title>
+    <title>Funnel Teil 1 + 2</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -48,6 +48,59 @@
 
       <section class="bottom-band">
         <h3 data-text="bottom.title"></h3>
+      </section>
+
+      <section class="story-copy" aria-label="Funnel Teil 2">
+        <p data-text="story.paragraph1"></p>
+        <p>
+          <span data-text="story.paragraph2Start"></span>
+          <strong data-text="story.paragraph2Strong1"></strong>,
+          <span data-text="story.paragraph2Middle"></span>
+          <strong data-text="story.paragraph2Strong2"></strong>,
+          <strong data-text="story.paragraph2Strong3"></strong>
+          <span data-text="story.paragraph2End"></span>
+        </p>
+        <p>
+          <span data-text="story.paragraph3Start"></span>
+          <strong data-text="story.paragraph3Strong1"></strong>
+          <span data-text="story.paragraph3End"></span>
+        </p>
+      </section>
+
+      <section
+        class="story-image-placeholder"
+        data-text="story.imagePlaceholder"
+        aria-label="Techniker Bild Platzhalter"
+      ></section>
+
+      <section class="reasons-band">
+        <h3 data-text="reasons.title"></h3>
+      </section>
+
+      <section class="reasons-list" aria-label="Warum du zu uns willst">
+        <article class="reason-card">
+          <div class="reason-icon" aria-hidden="true">🔑</div>
+          <div>
+            <h4 data-text="reasons.items.exclusiveProjects.title"></h4>
+            <p data-text="reasons.items.exclusiveProjects.description"></p>
+          </div>
+        </article>
+
+        <article class="reason-card">
+          <div class="reason-icon" aria-hidden="true">🤝</div>
+          <div>
+            <h4 data-text="reasons.items.teamCulture.title"></h4>
+            <p data-text="reasons.items.teamCulture.description"></p>
+          </div>
+        </article>
+
+        <article class="reason-card">
+          <div class="reason-icon" aria-hidden="true">🛠️</div>
+          <div>
+            <h4 data-text="reasons.items.quality.title"></h4>
+            <p data-text="reasons.items.quality.description"></p>
+          </div>
+        </article>
       </section>
     </main>
 
