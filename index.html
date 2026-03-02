@@ -617,13 +617,40 @@
         });
       }
 
+
+      function isLikelyBinary(textContent) {
+        if (!textContent) {
+          return false;
+        }
+
+        for (let index = 0; index < textContent.length; index += 1) {
+          const code = textContent.charCodeAt(index);
+          const isAllowedControl = code === 9 || code === 10 || code === 13;
+          if (code === 65533 || (code < 32 && !isAllowedControl)) {
+            return true;
+          }
+        }
+
+        return false;
+      }
+
       async function init() {
         try {
           const response = await fetch('./funnel-config.json');
-          config = await response.json();
+          const configText = await response.text();
+
+          if (isLikelyBinary(configText)) {
+            throw new Error('Binärdateien werden nicht unterstützt');
+          }
+
+          config = JSON.parse(configText);
         } catch (error) {
+          const details = error.message === 'Binärdateien werden nicht unterstützt'
+            ? '<p>Binärdateien werden nicht unterstützt. Bitte nutze eine gültige JSON-Datei.</p>'
+            : '<p>Bitte stelle sicher, dass die Datei <code>funnel-config.json</code> vorhanden ist und die Seite über einen lokalen Server läuft.</p>';
+
           document.getElementById('app').innerHTML =
-            '<section class="card"><h2>Fehler beim Laden der Konfiguration</h2><p>Bitte stelle sicher, dass die Datei <code>funnel-config.json</code> vorhanden ist und die Seite über einen lokalen Server läuft.</p></section>';
+            `<section class="card"><h2>Fehler beim Laden der Konfiguration</h2>${details}</section>`;
           return;
         }
 
