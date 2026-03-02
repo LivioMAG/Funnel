@@ -6,13 +6,14 @@
     <title>Recruiting Funnel</title>
     <style>
       :root {
-        --bg: #f5f7ff;
+        --bg: #ececec;
         --card: #ffffff;
-        --text: #1d2340;
-        --muted: #5d678a;
-        --accent: #2b6ef2;
-        --accent-soft: #e9efff;
-        --radius: 18px;
+        --text: #0f172a;
+        --muted: #374151;
+        --accent: #1f56c2;
+        --accent-soft: #dce7ff;
+        --navy: #062442;
+        --radius: 16px;
       }
 
       * {
@@ -23,23 +24,92 @@
         margin: 0;
         font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
         color: var(--text);
-        background: linear-gradient(180deg, #f9faff 0%, #eef2ff 100%);
+        background: var(--bg);
         min-height: 100vh;
       }
 
       .container {
-        max-width: 860px;
+        max-width: 760px;
         margin: 0 auto;
-        padding: 32px 16px 56px;
+        padding: 0 0 56px;
       }
 
-      .hero,
+      .landing-page,
       .card {
         background: var(--card);
-        border-radius: var(--radius);
-        box-shadow: 0 10px 25px rgba(21, 41, 92, 0.08);
-        padding: 28px;
-        margin-bottom: 20px;
+        margin-bottom: 16px;
+      }
+
+      .landing-page {
+        overflow: hidden;
+      }
+
+      .part {
+        padding: 20px 16px;
+      }
+
+      .part-1 {
+        text-align: center;
+        background: #fff;
+      }
+
+      .part-kicker {
+        margin: 0 0 8px;
+        font-weight: 600;
+        color: #6b7280;
+      }
+
+      .part-1 p {
+        margin: 0;
+        font-size: 1.9rem;
+        line-height: 1.2;
+        font-weight: 800;
+      }
+
+      .part-2 {
+        background: var(--navy);
+        color: #fff;
+        text-align: center;
+      }
+
+      .part-2 h2 {
+        margin: 0;
+        font-size: 2rem;
+      }
+
+      .part-3 {
+        background: #f3f4f6;
+      }
+
+      .checks {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 18px;
+      }
+
+      .checks li {
+        margin: 0;
+        color: #111827;
+        font-size: 1.05rem;
+        line-height: 1.4;
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 10px;
+      }
+
+      .part-4 {
+        background: #fff;
+      }
+
+      .part-4 p {
+        margin: 0;
+        font-size: 1.1rem;
+      }
+
+      .part-5 {
+        background: #e5e7eb;
       }
 
       h1,
@@ -69,8 +139,8 @@
       .button {
         width: 100%;
         border: 0;
-        border-radius: 12px;
-        padding: 13px 16px;
+        border-radius: 14px;
+        padding: 15px 16px;
         font-size: 1rem;
         font-weight: 650;
         cursor: pointer;
@@ -158,11 +228,56 @@
         font-weight: 600;
         margin-bottom: 10px;
       }
+
+      .card {
+        border-radius: var(--radius);
+        box-shadow: 0 6px 20px rgba(21, 41, 92, 0.08);
+        padding: 24px 18px;
+        margin: 16px;
+      }
+
+      @media (max-width: 640px) {
+        .part {
+          padding: 18px 14px;
+        }
+
+        .part-1 p,
+        .part-2 h2 {
+          font-size: 1.55rem;
+        }
+      }
     </style>
   </head>
   <body>
     <main class="container" id="app">
-      <section class="hero" id="company-card"></section>
+      <section class="landing-page" id="landing-page">
+        <section class="part part-1">
+          <p class="part-kicker">www.offene-stellenanzeige.ch</p>
+          <p>Deine nächste Baustelle?<br />Luxusvillen und High-Tech-Objekte</p>
+        </section>
+
+        <section class="part part-2">
+          <h2>Du bist perfekt für den Job geeignet wenn du:</h2>
+        </section>
+
+        <section class="part part-3">
+          <ul class="checks">
+            <li><span>🔧</span><span><strong>Eine technische Ausbildung</strong> mitbringst</span></li>
+            <li><span>💡</span><span><strong>Technisches Verständnis</strong> und sauberes Arbeiten liebst</span></li>
+            <li><span>🚗</span><span>Den <strong>Führerausweis Kat. B</strong> besitzt</span></li>
+            <li><span>🤝</span><span>Freundlich bist und <strong>gerne im Team</strong> arbeitest</span></li>
+            <li><span>🔥</span><span><strong>Zuverlässig, lösungsorientiert und motiviert</strong> bist</span></li>
+          </ul>
+        </section>
+
+        <section class="part part-4">
+          <p><strong>Gestalte die Sicherheit von morgen.</strong></p>
+        </section>
+
+        <section class="part part-5">
+          <button class="button button-primary" id="landing-cta">Jetzt in unter 2 Minuten bei uns bewerben 📱</button>
+        </section>
+      </section>
 
       <section class="card hidden" id="intro-card">
         <h2 id="intro-title"></h2>
@@ -220,7 +335,8 @@
       let score = 0;
 
       const el = {
-        companyCard: document.getElementById('company-card'),
+        landingPage: document.getElementById('landing-page'),
+        landingCta: document.getElementById('landing-cta'),
         introCard: document.getElementById('intro-card'),
         introTitle: document.getElementById('intro-title'),
         introText: document.getElementById('intro-text'),
@@ -248,32 +364,10 @@
       };
 
       function showOnly(section) {
-        [el.introCard, el.questionsCard, el.resultCard, el.contactCard, el.successCard].forEach((card) => {
+        [el.landingPage, el.introCard, el.questionsCard, el.resultCard, el.contactCard, el.successCard].forEach((card) => {
           card.classList.add('hidden');
         });
         section.classList.remove('hidden');
-      }
-
-      function renderCompany() {
-        const { company } = config;
-        document.title = config.meta.pageTitle;
-        document.documentElement.style.setProperty('--accent', config.meta.themeColor);
-
-        el.companyCard.innerHTML = `
-          <h1>${company.name}</h1>
-          <p><strong>${company.headline}</strong></p>
-          <p>${company.description}</p>
-          <h3>${company.benefitsTitle}</h3>
-          <ul>
-            ${company.benefits.map((benefit) => `<li>${benefit}</li>`).join('')}
-          </ul>
-          <button class="button button-primary" id="company-cta">${company.ctaLabel}</button>
-        `;
-
-        document.getElementById('company-cta').addEventListener('click', () => {
-          showOnly(el.introCard);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
       }
 
       function renderIntro() {
@@ -349,6 +443,11 @@
       }
 
       function wireEvents() {
+        el.landingCta.addEventListener('click', () => {
+          showOnly(el.introCard);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
         el.startBtn.addEventListener('click', () => {
           currentQuestionIndex = 0;
           showOnly(el.questionsCard);
@@ -405,7 +504,8 @@
           return;
         }
 
-        renderCompany();
+        document.title = config.meta.pageTitle;
+        document.documentElement.style.setProperty('--accent', config.meta.themeColor);
         renderIntro();
         renderContact();
         renderSuccess();
