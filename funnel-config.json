@@ -1,6 +1,6 @@
 {
   "meta": {
-    "pageTitle": "Funnel Teil 1 + 2 | Sicherheits-Techniker"
+    "pageTitle": "Funnel Teil 1 + 2 + 3 | Sicherheits-Techniker"
   },
   "texts": {
     "top": {
@@ -46,7 +46,7 @@
       "items": {
         "exclusiveProjects": {
           "title": "Exklusive Projekte",
-          "description": "Arbeite an hochwertigen Objekten mit moderner Sicherheits- und Gebäudetechnik."
+          "description": "Luxusvillen, Firmengebäude und High-End-Objekte. Keine 08/15-Einsätze."
         },
         "teamCulture": {
           "title": "Starkes Team",
@@ -55,8 +55,32 @@
         "quality": {
           "title": "Qualität mit Anspruch",
           "description": "Von Planung bis Inbetriebnahme zählt saubere Arbeit auf professionellem Niveau."
+        },
+        "companyCar": {
+          "title": "Firmenfahrzeug zur Privatnutzung",
+          "description": "Top eingerichtet, sauber, modern."
+        },
+        "securityTech": {
+          "title": "Modernste Sicherheitstechnik",
+          "description": "Face-ID, Vernebelungsanlagen, Videoüberwachung, intelligente Sensorik: High-Tech pur."
+        },
+        "familyTeam": {
+          "title": "Familiäres, wertschätzendes Team",
+          "description": "Flache Strukturen, ehrliche Zusammenarbeit, kurze Wege."
+        },
+        "allowance": {
+          "title": "600 CHF steuerfreie Spesen",
+          "description": "Plus moderne Arbeitsgeräte (Laptop, Handy, Tablet)."
+        },
+        "vacation": {
+          "title": "5 Wochen Ferien",
+          "description": "Zeit für dich, um abzuschalten und neue Energie zu tanken."
         }
       }
+    },
+    "part3": {
+      "ctaLabel": "Loslegen bei Hauser\nSicherheitssysteme!",
+      "imagePlaceholder": "BILD PLATZHALTER"
     }
   }
 }

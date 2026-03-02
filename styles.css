@@ -68,7 +68,9 @@ body {
 }
 
 .logo-placeholder,
-.image-placeholder {
+.image-placeholder,
+.story-image-placeholder,
+.part3-image-placeholder {
   border: 2px dashed #c5c5c5;
   background: #f8f8f8;
   color: #727272;
@@ -165,33 +167,6 @@ body {
   line-height: 1;
 }
 
-@media (max-width: 420px) {
-  .hero-copy h1 {
-    font-size: 20px;
-  }
-
-  .hero-copy p {
-    font-size: 20px;
-  }
-
-  .job-strip h2 {
-    font-size: 32px;
-  }
-
-  .meta-row p {
-    font-size: 16px;
-  }
-
-  .cta {
-    font-size: 20px;
-  }
-
-  .bottom-band h3 {
-    font-size: 30px;
-  }
-}
-
-
 .story-copy {
   padding: 20px 18px 8px;
 }
@@ -209,11 +184,6 @@ body {
 
 .story-image-placeholder {
   height: 270px;
-  border: 2px dashed #c5c5c5;
-  background: #f8f8f8;
-  color: #727272;
-  display: grid;
-  place-items: center;
   font-size: 18px;
   margin: 0;
 }
@@ -272,7 +242,50 @@ body {
   color: #2b2b2b;
 }
 
+.part3-cta-wrap {
+  background: #efefef;
+  padding: 16px;
+}
+
+.part3-cta {
+  white-space: pre-line;
+  font-size: 42px;
+  line-height: 1.12;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.part3-image-placeholder {
+  height: 210px;
+  font-size: 16px;
+  margin: 0;
+}
+
 @media (max-width: 420px) {
+  .hero-copy h1 {
+    font-size: 20px;
+  }
+
+  .hero-copy p {
+    font-size: 20px;
+  }
+
+  .job-strip h2 {
+    font-size: 32px;
+  }
+
+  .meta-row p {
+    font-size: 16px;
+  }
+
+  .cta {
+    font-size: 20px;
+  }
+
+  .bottom-band h3 {
+    font-size: 30px;
+  }
+
   .story-copy p {
     font-size: 16px;
   }
@@ -283,5 +296,9 @@ body {
 
   .reason-card h4 {
     font-size: 24px;
+  }
+
+  .part3-cta {
+    font-size: 34px;
   }
 }
